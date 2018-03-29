@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/coreui.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/coreui-standalone.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
 
 
 </head>
-<body>
+<body class="sidebar-fixed">
+
+
 {% block content %}
 {% endblock %}
 
@@ -20,10 +23,6 @@
     <script src="{% static 'core/js/coreui.bundle.js'%}"></script>
 
     <script src="{% static 'core/vendors/js/Chart.min.js'%}"></script>
-
-</body>
-</html>
-
 
     <script src="{% static 'core/js/ajax-load.js'%}"></script>
     <script src="{% static 'core/js/aside-menu.js'%}"></script>
@@ -36,3 +35,8 @@
     <script src="{% static 'core/vendors/js/popper.min.js'%}"></script>
     <script src="{% static 'core/vendors/js/bootstrap.min.js'%}"></script>
     <script src="{% static 'core/vendors/js/pace.min.js'%}"></script>
+
+</body>
+</html>
+
+
