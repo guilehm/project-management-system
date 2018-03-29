@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # my apps
     'core',
     'register',
+
+    # third apps
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [
