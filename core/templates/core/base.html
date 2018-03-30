@@ -145,16 +145,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-paper-plane"></i> Views</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-users"></i> Users</a>
-              </li>
             </ul>
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-paper-plane"></i> Buttons</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-user"></i> Users</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="buttons-buttons.html"><i class="fa fa-chart-pie"></i> Buttons</a>
+                <a class="nav-link" href="{% url 'register:users' %}"><i class="fa fa-user"></i> Users View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register:new-user' %}"><i class="fa fa-user-plus"></i> Create New User</a>
               </li>
 
             </ul>

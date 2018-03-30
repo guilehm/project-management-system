@@ -19,7 +19,7 @@ due = (
 # Create your models here.
 class Project(models.Model):
     name = models.CharField(max_length=80)
-    assign = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
+    assign = models.ManyToManyField(User)
     efforts = models.DurationField(null=True)
     status = models.CharField(max_length=7, choices=status, default=1)
     dead_line = models.DateField()

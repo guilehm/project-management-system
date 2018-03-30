@@ -22,7 +22,7 @@ class Company(models.Model):
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    project = models.ManyToManyField(Project)
 
     def __str__(self):
         return (str(self.user))
