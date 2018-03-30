@@ -1,6 +1,12 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+
+{% block breadcrumb %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Projects</li>
+<li class="breadcrumb-item active">Views</li>
+{% endblock breadcrumb%}
 {% block content %}
 <div class="col-md-12">
     <div class="card">
@@ -10,9 +16,9 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="col-sm-6 col-lg-4">
+                <div class="col-sm-8">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="callout callout-dark">
                                 <small class="text-muted">Tasks</small>
                                 <br>
@@ -23,27 +29,17 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="callout callout-success">
-                                <small class="text-muted">Tasks </small>
+                                <small class="text-muted">Overdue Tasks </small>
                                 <br>
-                                <strong class="h4">{{ tasks.overdue }}</strong>
+                                <strong class="h4">{{ overdue_tasks.count }}</strong>
                                 <div class="chart-wrapper"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
                                     <canvas id="sparkline-chart-4" width="86" height="25" class="chartjs-render-monitor" style="display: block; width: 86px; height: 25px;"></canvas>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
-                            <div class="callout callout-success">
-                                <small class="text-muted">Organic</small>
-                                <br>
-                                <strong class="h4">49,123</strong>
-                                <div class="chart-wrapper"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                                    <canvas id="sparkline-chart-5" width="86" height="25" class="chartjs-render-monitor" style="display: block; width: 86px; height: 25px;"></canvas>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
 
@@ -61,7 +57,7 @@
                     </li>
                     <li class="divider"></li>
                     {% for project in projects %}
-                    <li>
+                    <li class="my-2">
                         {% if project.status == '1' %}
                                 <span class="badge badge-danger" style="width: 50px;">Stuck</span>
                             {% elif project.status == '2' %}

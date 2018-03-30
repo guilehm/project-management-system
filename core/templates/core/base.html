@@ -124,26 +124,29 @@
       <nav class="sidebar-nav">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'core:index' %}"><i class="fa fa-tachometer-alt"></i> Dashboard <span class="badge badge-primary">NEW</span></a>
+            <a class="nav-link" href="{% url 'core:index' %}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
           </li>
 
+          <!--<li class="nav-title">-->
+            <!--Theme-->
+          <!--</li>-->
+          <!--<li class="nav-item">-->
+            <!--<a href="colors.html" class="nav-link"><i class="fa fa-tint"></i> Colors</a>-->
+          <!--</li>-->
+          <!--<li class="nav-item">-->
+            <!--<a href="typography.html" class="nav-link"><i class="fa fa-user"></i> Typograhy</a>-->
+          <!--</li>-->
           <li class="nav-title">
-            Theme
-          </li>
-          <li class="nav-item">
-            <a href="colors.html" class="nav-link"><i class="fa fa-tint"></i> Colors</a>
-          </li>
-          <li class="nav-item">
-            <a href="typography.html" class="nav-link"><i class="fa fa-user"></i> Typograhy</a>
-          </li>
-          <li class="nav-title">
-            Components
+            Info
           </li>
           <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-puzzle-piece"></i> Projects</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-paper-plane"></i> Views</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-users"></i> Users</a>
               </li>
             </ul>
           </li>
@@ -217,9 +220,10 @@
     <main class="main">
       <!-- Breadcrumb -->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item"><a href="#">Admin</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        {% block breadcrumb %}
+        <li class="breadcrumb-item active">Home</li>
+        <li class="breadcrumb-item">Dashboard</li>
+        {% endblock breadcrumb%}
 
         <!-- Breadcrumb Menu-->
         <li class="breadcrumb-menu d-md-down-none">
