@@ -100,3 +100,4 @@ ENV/
 *.xml
 .idea/*
 register/migrations/*
+projects/migrations/*

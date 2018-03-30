@@ -1,12 +1,12 @@
 from django import forms
-from register.models import Company
+from register.models import Company as Comp
 from register.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(label='E-mail', required=True)
-    company = forms.ModelChoiceField(queryset=Company.objects.all())
+    company = forms.ModelChoiceField(queryset=Comp.objects.all())
 
     class Meta:
         model = User
@@ -34,11 +34,9 @@ class RegistrationForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         company = self.cleaned_data['company']
 
-
-
         if commit:
             user.save()
-            user_profile = UserProfile.objects.create(user=user, company=Company.objects.get(name=company))
+            user_profile = UserProfile.objects.create(user=user, company=Comp.objects.get(name=company))
             user_profile.save()
 
         return user
