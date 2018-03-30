@@ -18,6 +18,13 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
+                                {% if form.username.errors %}
+                                    <ol>
+                                    {% for error in form.username.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="form-group">
@@ -26,6 +33,13 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
+                                {% if form.first_name.errors %}
+                                    <ol>
+                                    {% for error in form.first_name.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="form-group">
@@ -34,6 +48,13 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
+                                {% if form.last_name.errors %}
+                                    <ol>
+                                    {% for error in form.last_name.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,6 +63,13 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                 </div>
+                                {% if form.email.errors %}
+                                    <ol>
+                                    {% for error in form.email.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="form-group">
@@ -50,6 +78,13 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-key"></i></span>
                                 </div>
+                                {% if form.password1.errors %}
+                                    <ol>
+                                    {% for error in form.password1.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="form-group">
@@ -58,7 +93,15 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-key"></i></span>
                                 </div>
+
                             </div>
+                            {% if form.password2.errors %}
+                                    <ol>
+                                    {% for error in form.password2.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
                         </div>
                         <div class="form-group">
                             <div class="input-group">
@@ -66,6 +109,13 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-industry"></i></span>
                                 </div>
+                                {% if form.company.errors %}
+                                    <ol>
+                                    {% for error in form.company.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
                             </div>
                         </div>
 
@@ -79,4 +129,6 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}

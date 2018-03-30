@@ -1,5 +1,6 @@
 from django import forms
 from register.models import Company
+from register.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -31,11 +32,14 @@ class RegistrationForm(UserCreationForm):
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         user.email = self.cleaned_data['email']
-        user.company = self.company
+        company = self.cleaned_data['company']
+
 
 
         if commit:
             user.save()
+            user_profile = UserProfile.objects.create(user=user, company=Company.objects.get(name=company))
+            user_profile.save()
 
         return user
 

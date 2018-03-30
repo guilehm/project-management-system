@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.shortcuts import redirect
-from django.http import HttpResponseRedirect
 from .forms import RegistrationForm
 
 # Create your views here.
@@ -10,15 +8,14 @@ def register(request):
         context = {'form':form}
         if form.is_valid():
             form.save()
-            print('form é válido')
-            return redirect('core:index')
+            created = True
+            context = {'created' : created}
+            return render(request, 'core/index.html', context)
         else:
-            print('form não é válido')
             return render(request, 'register/reg_form.html', context)
     else:
         form = RegistrationForm()
         context = {
             'form' : form,
         }
-        print('situação2')
         return render(request, 'register/reg_form.html', context)
