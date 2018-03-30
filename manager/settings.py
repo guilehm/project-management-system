@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # my apps
     'core',
     'register',
+    'projects',
 
     # third apps
     'multiselectfield',
