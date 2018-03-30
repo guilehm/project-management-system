@@ -11,7 +11,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            Projects View
+            <strong>{{ projects.count }} Active Projects</strong>
         </div>
         <div class="card-body">
             <div class="row">
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="callout callout-success">
+                            <div class="callout callout-danger">
                                 <small class="text-muted">Overdue Tasks </small>
                                 <br>
                                 <strong class="h4">{{ overdue_tasks.count }}</strong>

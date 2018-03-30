@@ -14,8 +14,7 @@ class ProjectAdmin(admin.ModelAdmin):
         model = Project
 
 class TaskAdmin(admin.ModelAdmin):
-    raw_id_fields = ('project',)
-    list_display = ['task_name','project',]
+    list_display = ['task_name','project']
     list_filter = ['project', ]
     search_fields = ['project']
 

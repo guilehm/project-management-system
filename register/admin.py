@@ -7,6 +7,9 @@ class CompanyAdmin(admin.ModelAdmin):
     list_display = ['name','email','city','found_date']
     search_fields = ['name', 'social_name','city']
 
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'company',]
+
 # Register your models here.
 admin.site.register(Company, CompanyAdmin)
-admin.site.register(UserProfile)
+admin.site.register(UserProfile, UserProfileAdmin)

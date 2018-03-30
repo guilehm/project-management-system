@@ -35,6 +35,7 @@ class Project(models.Model):
 
 class Task(models.Model):
     project = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+    assign = models.ManyToManyField(User, null=True)
     task_name = models.CharField(max_length=80)
     status = models.CharField(max_length=7, choices=status, default=1)
     due = models.CharField(max_length=7, choices=due, default=1, null=True)
