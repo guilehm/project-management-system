@@ -10,7 +10,7 @@ def register(request):
             form.save()
             created = True
             context = {'created' : created}
-            return render(request, 'core/index.html', context)
+            return render(request, 'register/reg_form.html', context)
         else:
             return render(request, 'register/reg_form.html', context)
     else:
