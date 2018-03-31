@@ -38,13 +38,10 @@ def login_view(request):
         if form.is_valid():
             authenticated_user = authenticate(username=request.POST['username'], password=request.POST['password'])
             login(request, authenticated_user)
-            print('aqui é POST')
             return redirect('core:index')
         else:
-            print('o form não é válido')
             return render(request, 'register/login.html', {'login_form':form})
     else:
-        print('aqui não é POST')
         form = AuthenticationForm()
     return render(request, 'register/login.html', {'login_form':form})
 

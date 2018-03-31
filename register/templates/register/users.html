@@ -48,7 +48,7 @@
                             <td>
                                 <div class="clearfix">
                                 <div class="float-left">
-                                <strong>{% widthratio user.tasks_count tasks.count 100 %}%</strong>
+                                <strong>{% widthratio user.task_set.values.count tasks.count 100 %}%</strong>
                                 </div>
                                 <div class="float-right">
                                 <small class="text-muted">of total tasks</small>
@@ -59,7 +59,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <span class="badge badge-pill badge-dark">{{ user.tasks_count }}</span>
+                                <span class="badge badge-pill badge-dark">{{ user.task_set.values.count }}</span>
                                 <span class="badge badge-pill badge-dark"></span>
                             </td>
                             <td>
