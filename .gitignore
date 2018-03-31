@@ -102,3 +102,4 @@ ENV/
 register/migrations/*
 projects/migrations/*
 !venv\Lib\site-packages\django\contrib\auth\models.py
+db.sqlite3
