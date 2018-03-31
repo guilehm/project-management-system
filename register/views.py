@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login
+from projects.models import Task
 from .forms import RegistrationForm
 
 
@@ -27,7 +28,9 @@ def register(request):
 
 def usersView(request):
     users = User.objects.all()
+    tasks = Task.objects.all()
     context = {
         'users': users,
+        'tasks': tasks,
     }
     return render(request, 'register/users.html', context)
