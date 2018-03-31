@@ -9,6 +9,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ['name', 'company', ]
     list_filter = ['name', 'company', ]
     search_fields = ['name', 'company', 'status',]
+    prepopulated_fields = {'slug':('name',)}
 
     class Meta:
         model = Project
