@@ -1,0 +1,121 @@
+{% extends 'core/base.html' %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Company</li>
+        <li class="breadcrumb-item active">New Company</li>
+{% endblock breadcrumb%}
+
+{% block content %}
+<div class="container">
+
+
+
+  {% if created %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          Parabéns, sua empresa foi criada!
+      </div>
+  {% else %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Company Creation Form
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.social_name }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                {% if form.social_name.errors %}
+                                    <ol>
+                                    {% for error in form.social_name.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.name }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                {% if form.name.errors %}
+                                    <ol>
+                                    {% for error in form.name.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.email }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                </div>
+                                {% if form.email.errors %}
+                                    <ol>
+                                    {% for error in form.email.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.city }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                {% if form.city.errors %}
+                                    <ol>
+                                    {% for error in form.city.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.found_date }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                </div>
+
+                            </div>
+                            {% if form.found_date.errors %}
+                                    <ol>
+                                    {% for error in form.found_date.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                        </div>
+
+                        <div class="">
+                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

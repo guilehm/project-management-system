@@ -7,7 +7,6 @@ class Company(models.Model):
     social_name = models.CharField(max_length=80)
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    # cnpj = models.CharField(max_length=14)
     city = models.CharField(max_length=50)
     found_date = models.DateField()
 

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 from projects.models import Task
 from .forms import RegistrationForm
+from .forms import CompanyRegistrationForm
 
 
 # Create your views here.
@@ -36,3 +37,22 @@ def usersView(request):
         'tasks': tasks,
     }
     return render(request, 'register/users.html', context)
+
+
+def newCompany(request):
+    if request.method == 'POST':
+        form = CompanyRegistrationForm(request.POST)
+        context = {'form':form}
+        if form.is_valid():
+            form.save()
+            created = True
+            context = {'created' : created}
+            return render(request, 'register/new_company.html', context)
+        else:
+            return render(request, 'register/new_company.html', context)
+    else:
+        form = CompanyRegistrationForm()
+        context = {
+            'form' : form,
+        }
+        return render(request, 'register/new_company.html', context)
