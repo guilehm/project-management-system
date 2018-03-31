@@ -13,6 +13,9 @@ from django.contrib.auth import login
 
 # Create your views here.
 def index(request):
+    return render(request, 'core/index.html')
+
+def dashboard(request):
     users = User.objects.all()
     active_users = User.objects.all().filter(is_active=True)
     companies = Company.objects.all()
@@ -25,7 +28,7 @@ def index(request):
         'projects' : projects,
         'tasks' : tasks,
     }
-    return render(request, 'core/index.html', context)
+    return render(request, 'core/dashboard.html', context)
 
 
 def model(request):

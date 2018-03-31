@@ -26,6 +26,8 @@ def register(request):
         return render(request, 'register/reg_form.html', context)
 
 
+
+
 def usersView(request):
     users = User.objects.all()
     tasks = Task.objects.all()

@@ -1,99 +1,41 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+{% block breadcrumb %}
+<li class="breadcrumb-item active">Home</li>
+{% endblock breadcrumb%}
+
 {% block content %}
-
 <div class="container-fluid">
-<div class="animated fadeIn">
+  <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
   <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-primary">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right">
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-cog"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <h4 class="mb-0">{{ companies.count }}</h4>
-          <p>Registered Companies</p>
-        </div>
-        <div class="chart-wrapper px-3" style="height:70px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-          <canvas id="card-chart1" class="chart chartjs-render-monitor" height="70" width="248" style="display: block; width: 248px; height: 70px;"></canvas>
-        </div>
-      </div>
-    </div>
-    <!--/.col-->
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-info">
-        <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
-            <i class="icon-location-pin"></i>
-          </button>
-          <h4 class="mb-0">{{ users.count }}</h4>
-          <p>Registered Users</p>
-        </div>
-        <div class="chart-wrapper px-3" style="height:70px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-          <canvas id="card-chart2" class="chart chartjs-render-monitor" height="70" width="248" style="display: block; width: 248px; height: 70px;"></canvas>
-        </div>
-      </div>
-    </div>
-    <!--/.col-->
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-warning">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right">
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <h4 class="mb-0">{{ projects.count }}</h4>
-          <p>Projects</p>
-        </div>
-        <div class="chart-wrapper" style="height:70px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-          <canvas id="card-chart3" class="chart chartjs-render-monitor" height="70" width="280" style="display: block; width: 280px; height: 70px;"></canvas>
-        </div>
-      </div>
-    </div>
-    <!--/.col-->
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-danger">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right">
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <h4 class="mb-0">{{ tasks.count }}</h4>
-          <p>Tasks</p>
-        </div>
-        <div class="chart-wrapper px-3" style="height:70px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-          <canvas id="card-chart4" class="chart chartjs-render-monitor" height="70" width="248" style="display: block; width: 248px; height: 70px;"></canvas>
-        </div>
-      </div>
-    </div>
-    <!--/.col-->
+  <div class="col-12">
+  <div class="card">
+  <div class="card-header">
+  <i class="fa fa-align-justify"></i> Main info
+  <div class="card-actions">
+  <a href="https://coreui.io/docs/components/bootstrap-jumbotron/" target="_blank">
+  <small class="text-muted">docs</small>
+  </a>
   </div>
-  <!--/.row-->
-</div>
-
+  </div>
+  <div class="card-body">
+  <div class="jumbotron bg-white">
+  <h1 class="display-3">Hello, world!</h1>
+  <p class="lead">Welcome to the Project Manager System.</p>
+  <hr class="my-4">
+  <p>Register your company and start managing your projects</p>
+  <p>That's it, simple, easy.</p>
+  <p class="lead">
+  <a class="btn btn-primary btn-lg" href="#" role="button">Set up your company</a>
+  </p>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
 </div>
 
 {% endblock %}

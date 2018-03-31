@@ -61,15 +61,17 @@
     <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <img src="{% static 'core/img/logos/gui-horizontal.png' %}" alt="" class="brand-gui ml-2 d-none d-lg-block">
-    <a class="navbar-brand" href="#"></a>
+    <img src="{% static 'core/img/logos/gui-horizontal.png' %}" alt="" class="brand-gui ml-2 d-none d-sm-block">
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <ul class="nav navbar-nav d-md-down-none">
       <li class="nav-item px-3">
-        <a class="nav-link" href="{% url 'core:index' %}">Dashboard</a>
+        <a class="nav-link" href="{% url 'core:index' %}">Home</a>
+      </li>
+      <li class="nav-item px-3">
+        <a class="nav-link" href="{% url 'core:dashboard' %}">Dashboard</a>
       </li>
       <li class="nav-item px-3">
         <a class="nav-link" href="#">Users</a>
@@ -131,7 +133,10 @@
       <nav class="sidebar-nav">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'core:index' %}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+            <a class="nav-link" href="{% url 'core:index' %}"><i class="fa fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:dashboard' %}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
           </li>
 
           <!--<li class="nav-title">-->
@@ -147,10 +152,18 @@
             Info
           </li>
           <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-industry"></i> Company</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'core:index'%}"><i class="fa fa-plus ml-2"></i> New Company</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-puzzle-piece"></i> Projects</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-paper-plane"></i> Views</a>
+                <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-paper-plane ml-2"></i> Views</a>
               </li>
             </ul>
           </li>
@@ -158,10 +171,10 @@
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-user"></i> Users</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'register:users' %}"><i class="fa fa-user"></i> Users View</a>
+                <a class="nav-link" href="{% url 'register:users' %}"><i class="fa fa-user ml-2"></i> Users View</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'register:new-user' %}"><i class="fa fa-user-plus"></i> Create New User</a>
+                <a class="nav-link" href="{% url 'register:new-user' %}"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
               </li>
 
             </ul>
