@@ -7,20 +7,32 @@
         <li class="breadcrumb-item active">New Company</li>
 {% endblock breadcrumb%}
 
+
+
+
+
 {% block content %}
-<div class="container">
-
-
-
-  {% if created %}
+<div class="container-fluid">
+  <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+  <div class="row">
+  <div class="col-12">
+  <div class="card">
+  <div class="card-header">Company Registration Form
+  </div>
+  <div class="card-body">
+    <div class="jumbotron bg-white">
+    <h1 class="display-3">Company Registration</h1>
+    <p class="lead">Make your company registration here</p>
+    <hr class="my-4">
+    {% if created %}
       <div class="alert alert-success alert-dismissible fade show" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
           Parabéns, sua empresa foi criada!
       </div>
-  {% else %}
-        <div class="col-sm-6">
+    {% else %}
+
             <div class="card">
                 <div class="card-header">
                     Company Creation Form
@@ -30,10 +42,10 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <div class="input-group">
-                                {{ form.social_name }}
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
+                                {{ form.social_name }}
                                 {% if form.social_name.errors %}
                                     <ol>
                                     {% for error in form.social_name.errors %}
@@ -45,10 +57,10 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                {{ form.name }}
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
+                                {{ form.name }}
                                 {% if form.name.errors %}
                                     <ol>
                                     {% for error in form.name.errors %}
@@ -60,10 +72,10 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                {{ form.email }}
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                 </div>
+                                {{ form.email }}
                                 {% if form.email.errors %}
                                     <ol>
                                     {% for error in form.email.errors %}
@@ -75,10 +87,10 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                {{ form.city }}
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
+                                {{ form.city }}
                                 {% if form.city.errors %}
                                     <ol>
                                     {% for error in form.city.errors %}
@@ -90,11 +102,10 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                {{ form.found_date }}
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-key"></i></span>
                                 </div>
-
+                                {{ form.found_date }}
                             </div>
                             {% if form.found_date.errors %}
                                     <ol>
@@ -113,9 +124,15 @@
                 </div>
             </div>
         </div>
-    </div>
     {% endif %}
+  </div>
+
+  </div>
+  </div>
+  </div>
+  </div>
 </div>
+
 
 
 {% endblock %}
