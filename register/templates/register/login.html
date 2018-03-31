@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                Login Form
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'core:login' %}">
+                         {% csrf_token %}
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ login_form.username }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ login_form.password }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        {% if login_form.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            Wrong username or password
+                        </div>
+                        {% endif %}
+                        <div class="form-group form-actions">
+                            <button type="submit" class="btn btn-sm btn-secondary">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'register:new-user' %}">Click here if you are not registered</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

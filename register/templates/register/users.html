@@ -2,7 +2,6 @@
 {% load staticfiles %}
 
 {% block content %}
-
 <div class="container-fluid">
     <div class="animated fade-in">
         <div class="row">
@@ -54,7 +53,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <i class="fa fa-cc-stripe" style="font-size:24px"></i>
+                                <span class="badge badge-pill badge-dark">{{ user.tasks_count }}</span>
                             </td>
                             <td>
                                 <div class="small text-muted">Last login</div>

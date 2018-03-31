@@ -88,9 +88,16 @@
       <li class="nav-item d-md-down-none">
         <a class="nav-link" href="#"><i class="fa fa-map-marker"></i></a>
       </li>
+      {% if user.is_authenticated %}
+      <li class="text-muted">Olá, {{ user.first_name }}</li>
+      {% else %}
+      <li class="text-muted">
+        <a href="{% url 'core:login' %}">Olá, faça login</a>
+      </li>
+      {% endif %}
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-          <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+          <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="{{ user }}">
         </a>
         <div class="dropdown-menu dropdown-menu-right">
           <div class="dropdown-header text-center">
@@ -109,7 +116,7 @@
           <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>
           <div class="divider"></div>
           <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+          <a class="dropdown-item" href="{% url 'core:logout' %}"><i class="fa fa-lock"></i> Logout</a>
         </div>
       </li>
     </ul>
