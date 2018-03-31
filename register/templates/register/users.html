@@ -1,14 +1,20 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+{% block breadcrumb %}
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Users View</li>
+{% endblock breadcrumb%}
+
 {% block content %}
 <div class="container-fluid">
     <div class="animated fade-in">
         <div class="row">
-            <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <table class="table table-responsive-sm table-hover table-outline mb-5 ">
                 <thead class="thead-light">
                 <tr>
-                    <th class="text-center"><i class="icon-people"></i></th>
+                    <th class="text-center"><i class="fa fa-user"></i></th>
                     <th>User</th>
                     <th class="text-center">Assigned Projects</th>
                     <th>Usage</th>
@@ -22,8 +28,8 @@
                         <tr>
                             <td class="text-center">
                                 <div class="avatar">
-                                <!--<img src="#" class="img-avatar" alt="{{ user.email }}">-->
-                                <span class="avatar-status badge-warning"></span>
+                                <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="{{ user.email }}">
+                                <span class="avatar-status badge-success"></span>
                                 </div>
                             </td>
                             <td>

@@ -1,6 +1,12 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+{% block breadcrumb %}
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Create New User</li>
+{% endblock breadcrumb%}
+
 {% block content %}
 <div class="container">
 

@@ -1,10 +1,16 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+{% block breadcrumb %}
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Login</li>
+{% endblock breadcrumb%}
+
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-8 col-12">
             <div class="card">
                 <div class="card-header">
                 Login Form
@@ -48,7 +54,7 @@
                         </div>
                         {% endif %}
                         <div class="form-group form-actions">
-                            <button type="submit" class="btn btn-sm btn-secondary">Login</button>
+                            <button type="submit" class="btn btn-sm btn-success">Login</button>
                         </div>
                     </form>
                 </div>
