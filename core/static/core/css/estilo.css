@@ -5,3 +5,8 @@
 .no-style {
 	list-style-type: none;
 }
+
+.brand-gui {
+	width: 50px;
+	position: relative;
+}
