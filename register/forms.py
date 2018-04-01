@@ -1,4 +1,3 @@
-from manager.settings import DATE_INPUT_FORMATS
 from django import forms
 from register.models import Company as Comp
 from register.models import UserProfile

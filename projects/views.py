@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.db.models import Avg
 from register.models import Project
 from projects.models import Task
+from projects.forms import TaskRegistrationForm
 
 # Create your views here.
 def projects(request):
@@ -16,3 +17,24 @@ def projects(request):
         'overdue_tasks' : overdue_tasks,
     }
     return render(request, 'projects/projects.html', context)
+
+def newTask(request):
+    if request.method == 'POST':
+        form = TaskRegistrationForm(request.POST)
+        context = {'form': form}
+        if form.is_valid():
+            form.save()
+            created = True
+            context = {
+                'task_created': created,
+                'form': form,
+            }
+            return render(request, 'projects/new_task.html', context)
+        else:
+            return render(request, 'projects/new_task.html', context)
+    else:
+        form = TaskRegistrationForm()
+        context = {
+            'form': form,
+        }
+        return render(request,'projects/new_task.html', context)

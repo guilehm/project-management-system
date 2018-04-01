@@ -1,0 +1,144 @@
+{% extends 'core/base.html' %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Company</li>
+        <li class="breadcrumb-item active">New Company</li>
+{% endblock breadcrumb%}
+
+
+
+
+
+{% block content %}
+<div class="container-fluid">
+  <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+  <div class="row">
+  <div class="col-12">
+  <div class="card">
+  <div class="card-header">Task Registration Form
+  </div>
+  <div class="card-body">
+    <div class="jumbotron bg-white">
+    <h1 class="display-3">Task Registration</h1>
+    <p class="lead">Register your projects tasks here</p>
+    <hr class="my-4">
+    {% if task_created %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          A new task was created.
+      </div>
+    {% endif %}
+
+            <div class="card">
+                <div class="card-header">
+                    Task Creation Form
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-form-label">Project</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+
+                                {{ form.project }}
+                                {% if form.project.errors %}
+                                    <ol>
+                                    {% for error in form.project.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Assign. <i>Crtl+click for multiple selection</i></label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                {{ form.assign }}
+                                {% if form.assign.errors %}
+                                    <ol>
+                                    {% for error in form.assign.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Task name</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                </div>
+                                {{ form.task_name }}
+                                {% if form.task_name.errors %}
+                                    <ol>
+                                    {% for error in form.task_name.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Status</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                {{ form.status }}
+                                {% if form.status.errors %}
+                                    <ol>
+                                    {% for error in form.status.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Due</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                </div>
+                                {{ form.due }}
+                            </div>
+
+                            {% if form.due.errors %}
+                                    <ol>
+                                    {% for error in form.due.errors %}
+                                        <li><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                    </ol>
+                                {% endif %}
+                        </div>
+
+                        <div class="">
+                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
