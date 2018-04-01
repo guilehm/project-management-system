@@ -134,22 +134,24 @@
                 <a class="nav-link" href="{% url 'projects:new-project'%}"><i class="fa fa-plus ml-2"></i> New Project</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-paper-plane ml-2"></i> Views</a>
+                <a class="nav-link" href="{% url 'projects:new-task'%}"><i class="fa fa-plus ml-2"></i> New Task</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-tachometer-alt"></i> Views</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-paper-plane ml-2"></i> Project's View</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'projects:projects'%}"><i class="fa fa-paper-plane ml-2"></i> Tasks</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'projects:new-task'%}"><i class="fa fa-plus ml-4"></i> New Task</a>
+                <a class="nav-link" href="{% url 'register:users'%}"><i class="fa fa-user ml-2"></i> Users Views</a>
               </li>
             </ul>
           </li>
           <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-user"></i> Users</a>
             <ul class="nav-dropdown-items">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'register:users' %}"><i class="fa fa-user ml-2"></i> Users View</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'register:new-user' %}"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
               </li>

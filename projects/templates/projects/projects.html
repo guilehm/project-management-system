@@ -87,5 +87,46 @@
         </div>
     </div>
 </div>
-
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>{{ projects.count }} Active Projects</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for project in projects %}
+                <div class="col-12 col-md-6 col-lg-4">
+                <div class="card mx-2">
+                    <div class="card-body">
+                        <div class="h4 m-0">
+                            {{ project.dead_line }}
+                            {% if project.status == '1' %}
+                            <p class="text-right lead text-danger">Stuck</p>
+                            {% elif project.status == '2' %}
+                            <p class="text-right lead text-success">Working</p>
+                            {% else %}
+                            <p class="text-right lead text-info">Done</p>
+                            {% endif %}
+                        </div>
+                        <div>{{ project.name }}</div>
+                        <p class="text-muted mb-0 text-right">{{ project.complete_per }}%</p>
+                        <div class="progress progress-xs mb-3">
+                            {% if project.complete_per < 30%}
+                            <div class="progress-bar bg-danger role="progressbar" style="width: {{ project.complete_per }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            {% elif project.complete_per < 80%}
+                            <div class="progress-bar bg-warning role="progressbar" style="width: {{ project.complete_per }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            {% else %}
+                            <div class="progress-bar bg-success role="progressbar" style="width: {{ project.complete_per }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            {% endif %}
+                        </div>
+                        <small class="text-muted">{{ project.description|truncatechars:60 }}</small>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -8,33 +8,34 @@
 {% block content %}
 <div class="container-fluid">
   <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
-  <div class="row">
-  <div class="col-12">
-  <div class="card">
-  <div class="card-header">
-  <i class="fa fa-align-justify"></i> Main info
-  <div class="card-actions">
-  <a href="" target="_blank">
-  <small class="text-muted">docs</small>
-  </a>
-  </div>
-  </div>
-  <div class="card-body">
-  <div class="jumbotron bg-white">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">Welcome to the Project Manager System.</p>
-  <hr class="my-4">
-  <p>Register your company and start managing your projects</p>
-  <p>That's it, simple, easy, fast.</p>
-  <p class="lead">
-  <a class="btn btn-primary btn-lg" href="{% url 'register:new-company' %}" role="button">Set up your company</a>
-  </p>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
+    <div class="row">
+    <div class="col-12">
+      <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Main info
+        <div class="card-actions">
+          <a href="" target="_blank">
+            <small class="text-muted">docs</small>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="jumbotron bg-white">
+          <h1 class="display-4">Hello, world!</h1>
+          <p class="lead">Welcome to the Project Manager System.</p>
+          <hr class="my-4">
+          <p>Register your company and start managing your projects</p>
+          <p>That's it, simple, easy, fast.</p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{% url 'register:new-company' %}" role="button">Set up your company</a>
+          </p>
+          <a href="{% url 'core:login' %}">Click here if you are already registered</a>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    </div>
   </div>
 </div>
 

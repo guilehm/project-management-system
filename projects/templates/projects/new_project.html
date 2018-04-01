@@ -3,8 +3,8 @@
 
 {% block breadcrumb %}
         <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Company</li>
-        <li class="breadcrumb-item active">New Company</li>
+        <li class="breadcrumb-item">Projects</li>
+        <li class="breadcrumb-item active">New Project</li>
 {% endblock breadcrumb%}
 
 
@@ -60,7 +60,7 @@
                             <label class="col-form-label">Assign. <i>Crtl+click for multiple selection</i></label>
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-users"></i></span>
                                 </div>
                                 {{ form.assign }}
                                 {% if form.assign.errors %}
@@ -75,7 +75,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-calculator"></i></span>
                                 </div>
                                 {{ form.efforts }}
                                 {% if form.efforts.errors %}
@@ -91,7 +91,7 @@
                             <label class="col-form-label">Status</label>
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-circle"></i></span>
                                 </div>
                                 {{ form.status }}
                                 {% if form.status.errors %}
@@ -107,7 +107,7 @@
                             <label class="col-form-label">Dead Line</label>
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
                                 </div>
                                 {{ form.dead_line }}
                             </div>
@@ -124,7 +124,7 @@
                             <label class="col-form-label">Company</label>
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-industry"></i></span>
                                 </div>
                                 {{ form.company }}
                             </div>
@@ -140,7 +140,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-percent"></i></span>
                                 </div>
                                 {{ form.complete_per }}
                             </div>
@@ -157,7 +157,7 @@
                             <label class="col-form-label">Description</label>
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-quote-left"></i></span>
                                 </div>
                                 {{ form.description }}
                             </div>
