@@ -3,6 +3,7 @@ from django.db.models import Avg
 from register.models import Project
 from projects.models import Task
 from projects.forms import TaskRegistrationForm
+from projects.forms import ProjectRegistrationForm
 
 # Create your views here.
 def projects(request):
@@ -38,3 +39,25 @@ def newTask(request):
             'form': form,
         }
         return render(request,'projects/new_task.html', context)
+
+def newProject(request):
+    if request.method == 'POST':
+        form = ProjectRegistrationForm(request.POST)
+        context = {'form': form}
+        if form.is_valid():
+            form.save()
+            created = True
+            form = ProjectRegistrationForm()
+            context = {
+                'project_created': created,
+                'form': form,
+            }
+            return render(request, 'projects/new_project.html', context)
+        else:
+            return render(request, 'projects/new_project.html', context)
+    else:
+        form = ProjectRegistrationForm()
+        context = {
+            'form': form,
+        }
+        return render(request,'projects/new_project.html', context)

@@ -46,7 +46,11 @@ def newCompany(request):
         if form.is_valid():
             form.save()
             created = True
-            context = {'created' : created}
+            form = CompanyRegistrationForm()
+            context = {
+                'created' : created,
+                'form' : form,
+                       }
             return render(request, 'register/new_company.html', context)
         else:
             return render(request, 'register/new_company.html', context)
