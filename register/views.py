@@ -72,7 +72,8 @@ def invites(request):
 def invite(request, profile_id):
     profile_to_invite = UserProfile.objects.get(id=profile_id)
     logged_profile = get_active_profile(request)
-    logged_profile.invite(profile_to_invite)
+    if not profile_to_invite in logged_profile.friends.all():
+        logged_profile.invite(profile_to_invite)
     return redirect('core:index')
 
 

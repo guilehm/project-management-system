@@ -28,8 +28,11 @@ class UserProfile(models.Model):
         return (str(self.user))
 
     def invite(self, invite_profile):
+
         invite = Invite(inviter=self, invited=invite_profile)
-        invite.save()
+        invites = self.received_invites.filter(inviter_id=invite_profile.id)
+        if not len(invites) > 0:    # don't accept duplicated invites
+            invite.save()
 
 
 class Invite(models.Model):
@@ -41,6 +44,8 @@ class Invite(models.Model):
         self.inviter.friends.add(self.invited)
         self.delete()
 
+    def __str__(self):
+        return str(self.inviter, 'x', self.invited)
 
 class Friends(models.Model):
     pass
