@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Invites</li>
+{% endblock breadcrumb%}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+    <div class="row">
+    <div class="col-12">
+
+        <div class="row">
+            {% if logged_user.received_invites.count %}
+            <!--<h3 class="lead">You have {{ logged_user.received_invites.count }} invite{{ logged_user.received_invites.count|pluralize }}.</h3>-->
+            <table class="table table-responsive-sm table-hover table-outline mb-5 ">
+                <thead class="thead-light">
+                <tr>
+                    <th class="text-center"><i class="fa fa-user"></i></th>
+                    <th>User</th>
+                    <th>Add / Delete</th>
+                    <th>Company</th>
+                    <th class="text-center">Friends*</th>
+                    <th>Activity</th>
+                </tr>
+            </thead>
+                    <tbody>
+                        <!-- user -->
+                        {% for invite in logged_user.received_invites.all %}
+                        <tr>
+                            <td class="text-center">
+                                <div class="avatar">
+                                <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="{{ user.email }}">
+                                <span class="avatar-status badge-success"></span>
+                                </div>
+                            </td>
+                            <td>
+                                {% if invite.inviter.user.get_full_name %}
+                                <div>{{ invite.inviter.user.get_full_name }}{% if invite.inviter.user.is_staff %} <span class="badge badge-pill badge-dark"> staff</span> {% endif %}</div>
+                                {% else %}
+                                <div>{{ invite.inviter.user.username }}{% if invite.inviter.user.is_staff %} <span class="badge badge-pill badge-dark"> staff</span> {% endif %}</div>
+                                {% endif %}
+                                <div class="small text-muted">
+                                <span>Joined:</span> | {{ invite.inviter.user.date_joined }}
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" class="badge badge-success text-white">Add friend</a>
+                                <a href="{% url 'register:delete-invite' invite_id=invite.id %}" class="badge badge-danger text-white">Remove invite</a>
+                            </td>
+                            <td>
+                                {{ invite.inviter.company }}
+                            </td>
+                            <td class="text-center">
+                                <span class="badge badge-pill badge-dark">{{ invite.inviter.user.task_set.values.count }} ***</span>
+                                <span class="badge badge-pill badge-dark"></span>
+                            </td>
+                            <td>
+                                <div class="small text-muted">Last login</div>
+                                <strong>{{ invite.inviter.user.last_login }}</strong>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <!-- end user -->
+                    </tbody>
+                </table>
+                {% else %}
+                {% if user.is_authenticated %}
+                    <span class="display-4 m-5">You have no invites :(</span>
+                {% else %}
+                    <a href="{% url 'core:login' %}" class="nav-link display-4">Log in to see your invites</a>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+
+
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

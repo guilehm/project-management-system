@@ -64,16 +64,27 @@ def newCompany(request):
         return render(request, 'register/new_company.html', context)
 
 
+def invites(request):
+    return render(request, 'register/invites.html')
+
+
 def invite(request, profile_id):
     profile_to_invite = UserProfile.objects.get(id=profile_id)
     logged_profile = get_active_profile(request)
     logged_profile.invite(profile_to_invite)
     return redirect('core:index')
 
+def deleteInvite(request, invite_id):
+    logged_user = get_active_profile(request)
+    logged_user.received_invites.get(id=invite_id).delete()
+    return render(request, 'register/invites.html')
 
-def invites(request):
-    user = get_active_profile(request)
-    user.received_invites
+
+
+# def invites(request):
+#     user = get_active_profile(request)
+#     return user.received_invites
+
 
 def get_active_profile(request):
     user_id = request.user.userprofile_set.values_list()[0][0]
