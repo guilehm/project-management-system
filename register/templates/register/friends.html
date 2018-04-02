@@ -25,16 +25,25 @@
                           <div class="message">
                             <div class="py-3 pb-5 mr-3 float-left">
                               <div class="avatar">
-                                <img src="/static/core/img/avatar/blank_profile.png" class="img-avatar" alt="person_name">
+                                <img src="/static/core/img/avatar/blank_profile.png" class="img-avatar" alt="{{ friend.user.get_full_name }}">
                                 <span class="avatar-status badge-success"></span>
                               </div>
                             </div>
                             <div>
                               <small class="text-muted">{{ friend.user.get_full_name }}</small>
-                              <small class="text-muted float-right mt-1">{{ friend.user.last_login|date:"H:i" }}</small>
+                                {% if friend.user.last_login %}
+                              <small class="text-muted float-right mt-1">Last login: {{ friend.user.last_login|date:"H:i" }} in {{ friend.user.last_login|date:"d/m" }}</small>
+                                {% endif %}
                             </div>
                             <div class="text-truncate font-weight-bold">{{ friend.company }}</div>
-                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                            <em class="text-muted">Projects that {{ friend.user.first_name }} is working:</em>
+                            <small class="text-muted">
+
+                                {% for project in friend.user.project_set.all %}
+                                {{ project.name }},
+                                {% endfor %}
+
+                            </small>
                           </div>
                         </div>
                     </div>
