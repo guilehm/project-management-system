@@ -30,14 +30,16 @@ class UserProfile(models.Model):
     def invite(self, invite_profile):
 
         invite = Invite(inviter=self, invited=invite_profile)
-        invites = self.received_invites.filter(inviter_id=invite_profile.id)
-        if not len(invites) > 0:    # don't accept duplicated invites
+        invites = invite_profile.received_invites.filter(inviter_id=self.id)
+        if len(invites) > 0:    # don't accept duplicated invites
+            pass
+        else:
             invite.save()
 
 
 class Invite(models.Model):
-    inviter = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING ,related_name='made_invites')
-    invited = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING ,related_name='received_invites')
+    inviter = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING, related_name='made_invites')
+    invited = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING, related_name='received_invites')
 
     def accept(self):
         self.invited.friends.add(self.inviter)
@@ -45,7 +47,7 @@ class Invite(models.Model):
         self.delete()
 
     def __str__(self):
-        return str(self.inviter, 'x', self.invited)
+        return str(self.inviter)
 
 class Friends(models.Model):
     pass
