@@ -264,7 +264,7 @@
               <small class="text-muted mr-3">Never logged in</small>
               {% endif %}
             <small class="text-muted text-truncate"><i class="fa fa-industry"></i> {{ user.company }}</small>
-            <a href="#" class="badge badge-success text-white">Add friend</a>
+            <a href="{% url 'register:invite' profile_id=user.id %}" class="badge badge-success text-white">Add friend</a>
           </div>
           {% endfor %}
         </div>

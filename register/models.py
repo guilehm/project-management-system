@@ -32,12 +32,5 @@ class UserProfile(models.Model):
 
 
 class Invite(models.Model):
-    inviter = models.ForeignKey(UserProfile, related_name='made_invites')
-    invited = models.ForeignKey(UserProfile, related_name='received_invites')
-
-class FriendList(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    friend = models.ManyToManyField(User)
-
-    def __str__(self):
-        return (str(self.user))
+    inviter = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING ,related_name='made_invites')
+    invited = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING ,related_name='received_invites')
