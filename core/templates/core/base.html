@@ -214,35 +214,61 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div class="tab-pane active" id="timeline" role="tabpanel">
+          <!--<div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">-->
+            <!--<small><b>Today</b></small>-->
+          <!--</div>-->
+          <!--<hr class="transparent mx-3 my-0">-->
+          <!--<div class="callout callout-warning m-0 py-3">-->
+            <!--<div class="avatar float-right">-->
+              <!--<img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="#">-->
+            <!--</div>-->
+            <!--<div>Meeting with-->
+              <!--<strong>Lucas</strong>-->
+            <!--</div>-->
+            <!--<small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>-->
+            <!--<small class="text-muted"><i class="fa fa-map-marker"></i>&nbsp; Palo Alto, CA </small>-->
+          <!--</div>-->
+          <!--<hr class="mx-3 my-0">-->
+          <!--<hr class="transparent mx-3 my-0">-->
+          <!--<div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">-->
+            <!--<small><b>Tomorrow</b></small>-->
+          <!--</div>-->
+          <!--<hr class="transparent mx-3 my-0">-->
+          <!--<hr class="mx-3 my-0">-->
+          <!--<div class="callout callout-success m-0 py-3">-->
+            <!--<div>-->
+              <!--<strong>#10 Startups.Garden</strong> Meetup</div>-->
+            <!--<small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>-->
+            <!--<small class="text-muted"><i class="fa fa-map-marker"></i>&nbsp; Palo Alto, CA </small>-->
+          <!--</div>-->
+          <!--<hr class="mx-3 my-0">-->
+          <!--<hr class="transparent mx-3 my-0">-->
           <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
-            <small><b>Today</b></small>
+            <small><b>Suggested Friends</b></small>
           </div>
-          <hr class="transparent mx-3 my-0">
-          <div class="callout callout-warning m-0 py-3">
-            <div class="avatar float-right">
-              <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="#">
+          {% for user in users_prof %}
+          <div class="m-2 mt-4 float-left">
+              <div class="avatar">
+                <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="person_name">
+                <span class="avatar-status badge-success"></span>
+              </div>
             </div>
-            <div>Meeting with
-              <strong>Lucas</strong>
-            </div>
-            <small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
-            <small class="text-muted"><i class="fa fa-map-marker"></i>&nbsp; Palo Alto, CA </small>
-          </div>
-          <hr class="mx-3 my-0">
-          <hr class="transparent mx-3 my-0">
-          <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
-            <small><b>Tomorrow</b></small>
-          </div>
           <hr class="transparent mx-3 my-0">
           <hr class="mx-3 my-0">
           <div class="callout callout-success m-0 py-3">
             <div>
-              <strong>#10 Startups.Garden</strong> Meetup</div>
-            <small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
-            <small class="text-muted"><i class="fa fa-map-marker"></i>&nbsp; Palo Alto, CA </small>
+              <strong>{{ user.user.first_name }}</strong> {{ user.user.last_name }}</div>
+              {% if user.user.last_login %}
+              <small class="text-muted mr-3">Last login: {{ user.user.last_login|date:"H:i" }} in {{ user.user.last_login|date:"d/m" }}</small>
+              {% else %}
+              <small class="text-muted mr-3">Never logged in</small>
+              {% endif %}
+            <small class="text-muted text-truncate"><i class="fa fa-industry"></i> {{ user.company }}</small>
+            <a href="#" class="badge badge-success text-white">Add friend</a>
           </div>
-          <hr class="mx-3 my-0">
+          {% endfor %}
         </div>
+
         <div class="tab-pane p-3" id="messages" role="tabpanel">
           <div class="message">
             <div class="py-3 pb-5 mr-3 float-left">
@@ -259,6 +285,9 @@
             <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
           </div>
         </div>
+
+
+
         <div class="tab-pane p-3" id="settings" role="tabpanel">
           <h6>Settings</h6>
 

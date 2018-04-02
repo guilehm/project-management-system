@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from register.models import Company
 from register.models import Project
+from register.models import UserProfile
 from projects.models import Task
 from django.contrib.auth import login
 
@@ -52,3 +53,15 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('core:index'))
+
+
+def context(request): # send context to base.html
+    # if not request.session.session_key:
+    #     request.session.create()
+    users = User.objects.all()
+    users_prof = UserProfile.objects.all()
+    context = {
+        'users': users,
+        'users_prof': users_prof,
+    }
+    return context
