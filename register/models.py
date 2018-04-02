@@ -25,3 +25,19 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return (str(self.user))
+
+    def invite(self, invite_profile):
+        invite = Invite(inviter=self, invited=invite_profile)
+        invite.save()
+
+
+class Invite(models.Model):
+    inviter = models.ForeignKey(UserProfile, related_name='made_invites')
+    invited = models.ForeignKey(UserProfile, related_name='received_invites')
+
+class FriendList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    friend = models.ManyToManyField(User)
+
+    def __str__(self):
+        return (str(self.user))

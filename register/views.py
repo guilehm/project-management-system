@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.shortcuts import redirect
 from projects.models import Task
+from .models import UserProfile
 from .forms import RegistrationForm
 from .forms import CompanyRegistrationForm
 
@@ -60,3 +62,15 @@ def newCompany(request):
             'form' : form,
         }
         return render(request, 'register/new_company.html', context)
+
+
+def invite(request, profile_id):
+    profile_to_invite = UserProfile.objects.get(id=profile_id)
+    logged_profile = get_active_profile(request)
+    logged_profile.invite(profile_to_invite)
+    # return redirect('core:index')
+
+
+def get_active_profile(request):
+    user_id = request.user.userprofile_set.values_list()[0][1]
+    return User.objects.get(id=user_id)

@@ -2,15 +2,15 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import logout
 from django.contrib.auth import authenticate
+from django.contrib.auth import login
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from register.models import Company
 from register.models import Project
 from register.models import UserProfile
 from projects.models import Task
-from django.contrib.auth import login
 
 # Create your views here.
 def index(request):
