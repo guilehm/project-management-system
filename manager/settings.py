@@ -133,8 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 if os.getcwd() == '/app':
     import dj_database_url
     DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost'),
-        'NAME' : 'mydatabase'
+        'default': dj_database_url.config(default='postgres://localhost')
     }
 
     # Honor header 'x-forwarded-proto' para request.is_secure()
