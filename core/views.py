@@ -64,10 +64,12 @@ def context(request): # send context to base.html
         try:
             user_id = request.user.userprofile_set.values_list()[0][0]
             logged_user = UserProfile.objects.get(id=user_id)
+            friends = logged_user.friends.all()
             context = {
                 'users': users,
                 'users_prof': users_prof,
                 'logged_user': logged_user,
+                'friends' : friends,
             }
             return context
         except:

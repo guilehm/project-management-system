@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.shortcuts import redirect
 from projects.models import Task
 from .models import UserProfile
+from .models import Invite
 from .forms import RegistrationForm
 from .forms import CompanyRegistrationForm
 
@@ -74,16 +75,17 @@ def invite(request, profile_id):
     logged_profile.invite(profile_to_invite)
     return redirect('core:index')
 
+
 def deleteInvite(request, invite_id):
     logged_user = get_active_profile(request)
     logged_user.received_invites.get(id=invite_id).delete()
     return render(request, 'register/invites.html')
 
 
-
-# def invites(request):
-#     user = get_active_profile(request)
-#     return user.received_invites
+def acceptInvite(request, invite_id):
+    invite = Invite.objects.get(id=invite_id)
+    invite.accept()
+    return redirect('register:invites')
 
 
 def get_active_profile(request):

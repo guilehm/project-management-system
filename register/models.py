@@ -21,7 +21,8 @@ class Company(models.Model):
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    project = models.ManyToManyField(Project)
+    project = models.ManyToManyField(Project, blank=True)
+    friends = models.ManyToManyField('self', blank=True)
 
     def __str__(self):
         return (str(self.user))
@@ -34,3 +35,12 @@ class UserProfile(models.Model):
 class Invite(models.Model):
     inviter = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING ,related_name='made_invites')
     invited = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING ,related_name='received_invites')
+
+    def accept(self):
+        self.invited.friends.add(self.inviter)
+        self.inviter.friends.add(self.invited)
+        self.delete()
+
+
+class Friends(models.Model):
+    pass

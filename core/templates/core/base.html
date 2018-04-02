@@ -74,7 +74,7 @@
             <strong>Account</strong>
           </div>
           <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
-          <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Invites<span class="badge badge-success">{{ logged_user.received_invites.count }}</span></a>
+          <a class="dropdown-item" href="{% url 'register:invites' %}"><i class="fa fa-envelope-o"></i> Invites<span class="badge badge-success">{{ logged_user.received_invites.count }}</span></a>
           <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span class="badge badge-danger">42</span></a>
           <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comments<span class="badge badge-warning">42</span></a>
           <div class="dropdown-header text-center">
@@ -254,6 +254,7 @@
             <small><b>Suggested Friends</b></small>
           </div>
           {% for user in users_prof %}
+          {% if not user in friends %}
           <div class="m-2 mt-4 float-left">
               <div class="avatar">
                 <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="person_name">
@@ -271,8 +272,10 @@
               <small class="text-muted mr-3">Never logged in</small>
               {% endif %}
             <small class="text-muted text-truncate"><i class="fa fa-industry"></i> {{ user.company }}</small>
-            <a href="{% url 'register:invite' profile_id=user.id %}" class="badge badge-success text-white">Add friend</a>
+            <a href="{% url 'register:invite' profile_id=user.id %}" class="badge badge-success text-white">Send Invite</a>
           </div>
+          {% else %}
+          {% endif %}
           {% endfor %}
           {% else %}
           <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">

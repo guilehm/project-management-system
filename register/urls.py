@@ -9,5 +9,6 @@ urlpatterns = [
     path('users/', views.usersView, name='users'),
     path('users/invite/<int:profile_id>/', views.invite, name='invite'),
     path('users/invites/', views.invites, name='invites'),
+    path('users/invites/accept/<int:invite_id>/', views.acceptInvite, name='accept-invite'),
     path('users/invites/delete/<int:invite_id>/', views.deleteInvite, name='delete-invite'),
 ]
