@@ -26,7 +26,7 @@
   <link href="{% static 'core/css/estilo.css' %}" rel="stylesheet">
 
 </head>
-
+{% block body %}
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
   <header class="app-header navbar">
     <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
@@ -423,4 +423,5 @@
     <script src="{% static 'core/js/main.js'%}"></script>
 
 </body>
+{% endblock body %}
 </html>

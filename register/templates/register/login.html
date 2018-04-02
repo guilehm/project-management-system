@@ -1,4 +1,4 @@
-{% extends 'core/base.html' %}
+<!--{% extends 'core/base.html' %}-->
 {% load staticfiles %}
 
 {% block breadcrumb %}
@@ -7,62 +7,90 @@
         <li class="breadcrumb-item active">Login</li>
 {% endblock breadcrumb%}
 
-{% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8 col-12">
-            <div class="card">
-                <div class="card-header">
-                Login Form
-                </div>
-                <div class="card-body">
-                    <form method="post" action="{% url 'core:login' %}">
-                         {% csrf_token %}
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text"
-                                   class="form-control"
-                                   name="{{ login_form.username.name }}"
-                                   placeholder="{{ login_form.username.label }}"
-                                   id="{{ login_form.username.id_for_label }}"
-                                   {% if login_form.username.value != None %}value="{{ login_form.username.value|stringformat:'s' }}"{% endif %}
-                                   maxlength="{{ login_form.username.field.max_length }}"
-                                   {% if login_form.username.field.required %}required{% endif %}>
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+{% block body %}
+<body class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <form method="post" action="{% url 'core:login' %}">
+                                {% csrf_token %}
+                                <h1>Login</h1>
+                                <p class="text-muted">Sign In to your account</p>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input type="text"
+                                       class="form-control"
+                                       name="{{ login_form.username.name }}"
+                                       placeholder="{{ login_form.username.label }}"
+                                       id="{{ login_form.username.id_for_label }}"
+                                       {% if login_form.username.value != None %}value="{{ login_form.username.value|stringformat:'s' }}"{% endif %}
+                                       maxlength="{{ login_form.username.field.max_length }}"
+                                       {% if login_form.username.field.required %}required{% endif %}>
                                 </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
+                                    </div>
+                                    <input type="password"
+                                       class="form-control"
+                                       name="{{ login_form.password.name }}"
+                                       placeholder="{{ login_form.password.label }}"
+                                       id="{{ login_form.password.id_for_label }}"
+                                       {% if login_form.password.value != None %}value="{{ login_form.password.value|stringformat:'s' }}"{% endif %}
+                                       maxlength="{{ login_form.password.field.max_length }}"
+                                       {% if login_form.password.field.required %}required{% endif %}>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary px-4">Login</button>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                                    </div>
+                                    {% if login_form.errors %}
+                                    <div class="alert alert-danger col-12 mt-3" role="alert">
+                                        Wrong username or password
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                        <div class="card-body text-center">
+                            <div>
+                                <h2>Sign up</h2>
+                                <p class="mt-4">Make your register now, it's free.</p>
+                                <a href="{% url 'register:new-user' %}" class="btn btn-primary active mt-3">Register Now!</a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="password"
-                                   class="form-control"
-                                   name="{{ login_form.password.name }}"
-                                   placeholder="{{ login_form.password.label }}"
-                                   id="{{ login_form.password.id_for_label }}"
-                                   {% if login_form.password.value != None %}value="{{ login_form.password.value|stringformat:'s' }}"{% endif %}
-                                   maxlength="{{ login_form.password.field.max_length }}"
-                                   {% if login_form.password.field.required %}required{% endif %}>
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        {% if login_form.errors %}
-                        <div class="alert alert-danger" role="alert">
-                            Wrong username or password
-                        </div>
-                        {% endif %}
-                        <div class="form-group form-actions">
-                            <button type="submit" class="btn btn-sm btn-success">Login</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <a href="{% url 'register:new-user' %}">Click here if you are not registered</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+  <!-- Bootstrap and necessary plugins -->
+    <script src="{% static 'core/vendors/js/jquery.min.js'%}"></script>
+    <script src="{% static 'core/vendors/js/popper.min.js'%}"></script>
+    <script src="{% static 'core/vendors/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'core/vendors/js/pace.min.js'%}"></script>
+    <script src="{% static 'core/vendors/js/Chart.min.js'%}"></script>
+
+  <!-- CoreUI main scripts -->
+
+    <script src="{% static 'core/js/app.js'%}"></script>
+
+  <!-- Plugins and scripts required by this views -->
+
+  <!-- Custom scripts required by this view -->
+    <script src="{% static 'core/js/main.js'%}"></script>
+
+</body>
+
 {% endblock %}
