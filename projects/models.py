@@ -24,7 +24,7 @@ class Project(models.Model):
     efforts = models.DurationField()
     status = models.CharField(max_length=7, choices=status, default=1)
     dead_line = models.DateField()
-    company = models.ForeignKey('register.Company', on_delete=models.DO_NOTHING, blank=True)
+    company = models.ForeignKey('register.Company', on_delete=models.DO_NOTHING)
     complete_per = models.FloatField(max_length=2, validators = [MinValueValidator(0), MaxValueValidator(100)])
     description = models.TextField(blank=True)
 
