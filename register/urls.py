@@ -8,4 +8,5 @@ urlpatterns = [
     path('new-company/', views.newCompany, name='new-company'),
     path('users/', views.usersView, name='users'),
     path('users/invite/<int:profile_id>/', views.invite, name='invite'),
+    path('users/invites/', views.invite, name='invites'),
 ]

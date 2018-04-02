@@ -60,8 +60,25 @@ def context(request): # send context to base.html
     #     request.session.create()
     users = User.objects.all()
     users_prof = UserProfile.objects.all()
-    context = {
-        'users': users,
-        'users_prof': users_prof,
-    }
-    return context
+    if request.user.is_authenticated:
+        try:
+            user_id = request.user.userprofile_set.values_list()[0][0]
+            logged_user = UserProfile.objects.get(id=user_id)
+            context = {
+                'users': users,
+                'users_prof': users_prof,
+                'logged_user': logged_user,
+            }
+            return context
+        except:
+            context = {
+                'users':users,
+                'users_prof':users_prof,
+            }
+            return context
+    else:
+        context = {
+            'users': users,
+            'users_prof': users_prof,
+        }
+        return context

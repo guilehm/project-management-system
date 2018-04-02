@@ -66,16 +66,16 @@ def newCompany(request):
 
 def invite(request, profile_id):
     profile_to_invite = UserProfile.objects.get(id=profile_id)
-    print('Profile to invite:',profile_to_invite)
     logged_profile = get_active_profile(request)
-    print('Logged profile:',logged_profile)
     logged_profile.invite(profile_to_invite)
-    print('aparentemente perfil foi convidado')
     return redirect('core:index')
 
 
+def invites(request):
+    user = get_active_profile(request)
+    user.received_invites
+
 def get_active_profile(request):
     user_id = request.user.userprofile_set.values_list()[0][0]
-    print(request.user.userprofile_set.values_list()[0])
-    print('O USER ID é ', user_id)
     return UserProfile.objects.get(id=user_id)
+

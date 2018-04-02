@@ -74,7 +74,7 @@
             <strong>Account</strong>
           </div>
           <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
-          <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">42</span></a>
+          <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Invites<span class="badge badge-success">{{ logged_user.received_invites.count }}</span></a>
           <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span class="badge badge-danger">42</span></a>
           <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comments<span class="badge badge-warning">42</span></a>
           <div class="dropdown-header text-center">
@@ -154,6 +154,12 @@
             <ul class="nav-dropdown-items">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'register:new-user' %}"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register:new-user' %}"><i class="fa fa-users ml-2"></i> Friends</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register:new-user' %}"><i class="fa fa-user-plus ml-2"></i> Invites</a>
               </li>
 
             </ul>
@@ -243,6 +249,7 @@
           <!--</div>-->
           <!--<hr class="mx-3 my-0">-->
           <!--<hr class="transparent mx-3 my-0">-->
+          {% if user.is_authenticated %}
           <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
             <small><b>Suggested Friends</b></small>
           </div>
@@ -252,7 +259,7 @@
                 <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="person_name">
                 <span class="avatar-status badge-success"></span>
               </div>
-            </div>
+          </div>
           <hr class="transparent mx-3 my-0">
           <hr class="mx-3 my-0">
           <div class="callout callout-success m-0 py-3">
@@ -267,7 +274,20 @@
             <a href="{% url 'register:invite' profile_id=user.id %}" class="badge badge-success text-white">Add friend</a>
           </div>
           {% endfor %}
+          {% else %}
+          <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
+            <small><b>Suggested Friends</b></small>
+          </div>
+          <div class="callout callout-success m-0 py-3">
+            <div>
+              <strong></strong></div>
+
+            <small class="text-muted text-truncate">Log in to see your Friends Suggested List</small>
+            <a href="{% url 'core:login' %}" class="badge badge-success text-white">Log in</a>
+          </div>
+          {% endif %}
         </div>
+
 
         <div class="tab-pane p-3" id="messages" role="tabpanel">
           <div class="message">
