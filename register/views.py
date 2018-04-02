@@ -93,3 +93,11 @@ def get_active_profile(request):
     user_id = request.user.userprofile_set.values_list()[0][0]
     return UserProfile.objects.get(id=user_id)
 
+
+def friends(request):
+    user = get_active_profile(request)
+    friends = user.friends.all()
+    context = {
+        'friends' : friends,
+    }
+    return render(request, 'register/friends.html', context)

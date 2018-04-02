@@ -31,9 +31,7 @@ class UserProfile(models.Model):
 
         invite = Invite(inviter=self, invited=invite_profile)
         invites = invite_profile.received_invites.filter(inviter_id=self.id)
-        if len(invites) > 0:    # don't accept duplicated invites
-            pass
-        else:
+        if not len(invites) > 0:    # don't accept duplicated invites
             invite.save()
 
 
