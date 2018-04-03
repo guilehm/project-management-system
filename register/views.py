@@ -41,6 +41,13 @@ def usersView(request):
     }
     return render(request, 'register/users.html', context)
 
+def user_view(request, profile_id):
+    user = UserProfile.objects.get(id=profile_id)
+    context = {
+        'user' : user,
+    }
+    return render(request, 'register/user.html', context)
+
 
 def newCompany(request):
     if request.method == 'POST':
