@@ -158,10 +158,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'register:friends' %}"><i class="fa fa-users ml-2"></i> Friends</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'register:invites' %}"><i class="fa fa-user-plus ml-2"></i> Invites</a>
-              </li>
-
             </ul>
           </li>
           <li class="divider"></li>
@@ -268,7 +264,8 @@
           <hr class="mx-3 my-0">
           <div class="callout callout-success m-0 py-3">
             <div>
-              <strong>{{ user.user.first_name }}</strong> {{ user.user.last_name }}</div>
+              <a href="{% url 'register:user' profile_id=user.id %}" class="text-dark">{{ user.user.first_name }} {{ user.user.last_name }}</a>
+            </div>
               {% if user.user.last_login %}
               <small class="text-muted mr-3">Last login: {{ user.user.last_login|date:"H:i" }} in {{ user.user.last_login|date:"d/m" }}</small>
               {% else %}

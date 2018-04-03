@@ -32,21 +32,21 @@
                                           </div>
                                         </div>
                                         <div>
-                                          <small class="text-muted">{{ user.user.get_full_name }}</small>
-                                            {% if user.user.last_login %}
-                                          <small class="text-muted float-right mt-1">Last login: {{ user.user.last_login|date:"H:i" }} in {{ user.user.last_login|date:"d/m" }}</small>
+                                          <small class="text-muted">{{ user_view.user.get_full_name }}</small>
+                                            {% if user_view.user.last_login %}
+                                          <small class="text-muted float-right mt-1">Last login: {{ user_view.user.last_login|date:"H:i" }} in {{ user_view.user.last_login|date:"d/m" }}</small>
                                             {% endif %}
                                         </div>
-                                        <div class="text-truncate font-weight-bold">{{ user.company }}</div>
-                                        {% if user.user.project_set %}
-                                        <em class="text-muted">Projects that {{ user.user.first_name }} is working:</em>
+                                        <div class="text-truncate font-weight-bold">{{ user_view.company }}</div>
+                                        {% if user_view.user.project_set %}
+                                        <em class="text-muted">Projects that {{ user_view.user.first_name }} is working:</em>
                                         <small class="text-muted">
-                                            {% for project in user.user.project_set.all %}
+                                            {% for project in user_view.user.project_set.all %}
                                             {{ project }},
                                             {% endfor %}
                                         </small>
                                         {% else %}
-                                        <em class="text-muted">{{ friend.user.first_name }} is working in no projects until now.</em>
+                                        <em class="text-muted">{{ user_view.user.first_name }} is working in no projects until now.</em>
                                         {% endif %}
                                       </div>
                                     </div>
@@ -55,9 +55,9 @@
                             <div class="col-12 col-md-6">
                                 <div class="card-body">
                                     <div class="tab-pane p-3 active show">
-                                        <h5 class="">{{ user.user.first_name }}'s Friends:</h5>
+                                        <h5 class="">{{ user_view.user.first_name }}'s Friends:</h5>
                                         <div class="row">
-                                        {% for friend in user.friends.all %}
+                                        {% for friend in user_view.friends.all %}
                                         <div class="py-3 pb-5 mr-3 float-left ml-3" style="width: 20%">
                                             <p class="avatar">
                                                 <img src="/static/core/img/avatar/blank_profile.png" class="img-avatar" alt="{{ friend.user.get_full_name }}">

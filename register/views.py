@@ -44,7 +44,7 @@ def usersView(request):
 def user_view(request, profile_id):
     user = UserProfile.objects.get(id=profile_id)
     context = {
-        'user' : user,
+        'user_view' : user,
     }
     return render(request, 'register/user.html', context)
 
