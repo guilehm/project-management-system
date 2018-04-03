@@ -59,7 +59,7 @@ def context(request): # send context to base.html
     # if not request.session.session_key:
     #     request.session.create()
     users = User.objects.all()
-    users_prof = UserProfile.objects.all()
+    users_prof = UserProfile.objects.exclude(id=request.user.userprofile_set.values_list()[0][0]) # exclude himself from invite list
     if request.user.is_authenticated:
         try:
             user_id = request.user.userprofile_set.values_list()[0][0]

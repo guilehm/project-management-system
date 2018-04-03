@@ -16,6 +16,12 @@ due = (
     ('3', 'Done'),
 )
 
+# priority = (
+#     ('1', 'Low'),
+#     ('2', 'Medium'),
+#     ('3', 'High'),
+# )
+
 # Create your models here.
 class Project(models.Model):
     name = models.CharField(max_length=80)
