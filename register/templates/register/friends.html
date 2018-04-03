@@ -16,41 +16,48 @@
                 <!--<h2 class="display-4">Friends</h2>-->
             <!--</div>-->
         <!--</div>-->
+
         <div class="row">
-            {% for friend in friends %}
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tab-pane p-3 active show">
-                          <div class="message">
-                            <div class="py-3 pb-5 mr-3 float-left">
-                              <div class="avatar">
-                                <img src="/static/core/img/avatar/blank_profile.png" class="img-avatar" alt="{{ friend.user.get_full_name }}">
-                                <span class="avatar-status badge-success"></span>
+                {% if friends %}
+                {% for friend in friends %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-pane p-3 active show">
+                              <div class="message">
+                                <div class="py-3 pb-5 mr-3 float-left">
+                                  <div class="avatar">
+                                    <img src="/static/core/img/avatar/blank_profile.png" class="img-avatar" alt="{{ friend.user.get_full_name }}">
+                                    <span class="avatar-status badge-success"></span>
+                                  </div>
+                                </div>
+                                <div>
+                                  <small class="text-muted">{{ friend.user.get_full_name }}</small>
+                                    {% if friend.user.last_login %}
+                                  <small class="text-muted float-right mt-1">Last login: {{ friend.user.last_login|date:"H:i" }} in {{ friend.user.last_login|date:"d/m" }}</small>
+                                    {% endif %}
+                                </div>
+                                <div class="text-truncate font-weight-bold">{{ friend.company }}</div>
+                                {% if friend.user.project_set.all %}
+                                <em class="text-muted">Projects that {{ friend.user.first_name }} is working:</em>
+                                <small class="text-muted">
+                                    {% for project in friend.user.project_set.all %}
+                                    {{ project.name }},
+                                    {% endfor %}
+                                </small>
+                                {% else %}
+                                <em class="text-muted">{{ friend.user.first_name }} is working in no projects until now.</em>
+                                {% endif %}
                               </div>
                             </div>
-                            <div>
-                              <small class="text-muted">{{ friend.user.get_full_name }}</small>
-                                {% if friend.user.last_login %}
-                              <small class="text-muted float-right mt-1">Last login: {{ friend.user.last_login|date:"H:i" }} in {{ friend.user.last_login|date:"d/m" }}</small>
-                                {% endif %}
-                            </div>
-                            <div class="text-truncate font-weight-bold">{{ friend.company }}</div>
-                            <em class="text-muted">Projects that {{ friend.user.first_name }} is working:</em>
-                            <small class="text-muted">
-
-                                {% for project in friend.user.project_set.all %}
-                                {{ project.name }},
-                                {% endfor %}
-
-                            </small>
-                          </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+                {% else %}
+                <span class="display-4 m-5">You have no friends :(</span>
+                {% endif %}
             </div>
-            {% endfor %}
-        </div>
         </div>
     </div>
 </div>
