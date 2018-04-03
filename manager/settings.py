@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -145,10 +144,12 @@ if os.getcwd() == '/app':
 
     # CONFIG FOR STATICFILES
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    print('PRINTING BASE_DIR\n',BASE_DIR)
     STATIC_ROOT = 'staticfiles'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
+    print('PRINTING STATICFILES_DIRS\n',STATICFILES_DIRS)
 
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
