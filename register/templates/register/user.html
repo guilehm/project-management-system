@@ -55,6 +55,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="card-body">
                                     <div class="tab-pane p-3 active show">
+                                        {% if user_view.friends.all %}
                                         <h5 class="">{{ user_view.user.first_name }}'s Friends:</h5>
                                         <div class="row">
                                         {% for friend in user_view.friends.all %}
@@ -68,6 +69,9 @@
                                             </p>
                                         </div>
                                         {% endfor%}
+                                        {% else %}
+                                        <em class="text-muted">{{ user_view.user.first_name }} have no friends.</em>
+                                        {% endif %}
                                         </div>
                                     </div>
                                 </div>
