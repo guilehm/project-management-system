@@ -129,6 +129,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/' # Included upload images
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'core/static/core/media') # Included upload images
+
 # Heroku configs
 if os.getcwd() == '/app':
     import dj_database_url
@@ -144,12 +147,10 @@ if os.getcwd() == '/app':
 
     # CONFIG FOR STATICFILES
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    print('PRINTING BASE_DIR\n',BASE_DIR)
     STATIC_ROOT = 'staticfiles'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
-    print('PRINTING STATICFILES_DIRS\n',STATICFILES_DIRS)
 
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

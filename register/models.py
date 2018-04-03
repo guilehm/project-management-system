@@ -19,16 +19,16 @@ class Company(models.Model):
         return (self.name)
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user    = models.ForeignKey(User, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     project = models.ManyToManyField(Project, blank=True)
     friends = models.ManyToManyField('self', blank=True)
+    img0    = models.ImageField(upload_to='avatar', blank=True)
 
     def __str__(self):
         return (str(self.user))
 
     def invite(self, invite_profile):
-
         invite = Invite(inviter=self, invited=invite_profile)
         invites = invite_profile.received_invites.filter(inviter_id=self.id)
         if not len(invites) > 0:    # don't accept duplicated invites
