@@ -3,11 +3,14 @@ botocore==1.9.23
 dj-database-url==0.5.0
 dj-static==0.0.6
 Django==2.0.3
+django-appconf==1.0.2
 django-multiselectfield==0.1.8
+django-staticfiles==1.2.1
 django-storages==1.6.6
 docutils==0.14
 gunicorn==19.7.1
 jmespath==0.9.3
+psycopg2==2.7.4
 python-dateutil==2.6.1
 pytz==2018.3
 s3transfer==0.1.13
