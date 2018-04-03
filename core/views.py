@@ -61,9 +61,9 @@ def context(request): # send context to base.html
     users = User.objects.all()
     users_prof = UserProfile.objects.all()
     if request.user.is_authenticated:
-        users_prof = UserProfile.objects.exclude(
-            id=request.user.userprofile_set.values_list()[0][0])  # exclude himself from invite list
         try:
+            users_prof = UserProfile.objects.exclude(
+                id=request.user.userprofile_set.values_list()[0][0])  # exclude himself from invite list
             user_id = request.user.userprofile_set.values_list()[0][0]
             logged_user = UserProfile.objects.get(id=user_id)
             friends = logged_user.friends.all()
@@ -75,6 +75,8 @@ def context(request): # send context to base.html
             }
             return context
         except:
+            print('tem que imprimir except ***************')
+            users_prof = UserProfile.objects.all()
             context = {
                 'users':users,
                 'users_prof':users_prof,

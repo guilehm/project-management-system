@@ -95,9 +95,15 @@ def get_active_profile(request):
 
 
 def friends(request):
-    user = get_active_profile(request)
-    friends = user.friends.all()
-    context = {
-        'friends' : friends,
-    }
+    if request.user.is_authenticated:
+        user = get_active_profile(request)
+        friends = user.friends.all()
+        context = {
+            'friends' : friends,
+        }
+    else:
+        users_prof = UserProfile.objects.all()
+        context= {
+            'users_prof' : users_prof,
+        }
     return render(request, 'register/friends.html', context)
