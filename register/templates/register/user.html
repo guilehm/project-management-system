@@ -63,7 +63,9 @@
                                                 <img src="/static/core/img/avatar/blank_profile.png" class="img-avatar" alt="{{ friend.user.get_full_name }}">
                                                 <span class="avatar-status badge-success"></span>
                                             </p>
-                                            <p>{{ friend.user.first_name }}</p>
+                                            <p>
+                                                <a href="{% url 'register:user' profile_id=friend.id%}" class="text-info">{{ friend.user.first_name }}</a>
+                                            </p>
                                         </div>
                                         {% endfor%}
                                         </div>
