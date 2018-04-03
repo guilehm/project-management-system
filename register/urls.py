@@ -13,5 +13,6 @@ urlpatterns = [
     path('users/invites/accept/<int:invite_id>/', views.acceptInvite, name='accept-invite'),
     path('users/invites/delete/<int:invite_id>/', views.deleteInvite, name='delete-invite'),
     path('users/friends/', views.friends, name='friends'),
+    path('users/friends/remove/<int:profile_id>/', views.remove_friend, name='remove-friend'),
 ]
 

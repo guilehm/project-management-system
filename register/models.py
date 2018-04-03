@@ -34,6 +34,11 @@ class UserProfile(models.Model):
         if not len(invites) > 0:    # don't accept duplicated invites
             invite.save()
 
+    def remove_friend(self, profile_id):
+        friend = UserProfile.objects.filter(id=profile_id)[0]
+        self.friends.remove(friend)
+
+
 
 class Invite(models.Model):
     inviter = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING, related_name='made_invites')
@@ -46,6 +51,3 @@ class Invite(models.Model):
 
     def __str__(self):
         return str(self.inviter)
-
-class Friends(models.Model):
-    pass

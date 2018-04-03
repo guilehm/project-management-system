@@ -32,7 +32,7 @@
                                   </div>
                                 </div>
                                 <div>
-                                  <small class="text-muted">{{ friend.user.get_full_name }}</small>
+                                    <a href="{% url 'register:user' profile_id=friend.id %}"><small class="text-muted">{{ friend.user.get_full_name }}</small></a>
                                     {% if friend.user.last_login %}
                                   <small class="text-muted float-right mt-1">Last login: {{ friend.user.last_login|date:"H:i" }} in {{ friend.user.last_login|date:"d/m" }}</small>
                                     {% endif %}
@@ -48,6 +48,9 @@
                                 {% else %}
                                 <em class="text-muted">{{ friend.user.first_name }} is working in no projects until now.</em>
                                 {% endif %}
+                                <div>
+                                    <a href="{% url 'register:remove-friend' profile_id=friend.id %}" class="badge badge-danger text-white">Remove friend</a>
+                                </div>
                               </div>
                             </div>
                         </div>

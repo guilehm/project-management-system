@@ -95,6 +95,11 @@ def acceptInvite(request, invite_id):
     invite.accept()
     return redirect('register:invites')
 
+def remove_friend(request, profile_id):
+    user = get_active_profile(request)
+    user.remove_friend(profile_id)
+    return redirect('register:friends')
+
 
 def get_active_profile(request):
     user_id = request.user.userprofile_set.values_list()[0][0]
