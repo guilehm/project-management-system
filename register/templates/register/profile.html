@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Friends</li>
+{% endblock breadcrumb%}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+        <!--<div class="row">-->
+            <!--<div class="col-12">-->
+                <!--<h2 class="display-4">Friends</h2>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="row">
+                {% if friends %}
+                {% for friend in friends %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-pane p-3 active show">
+                              <div class="message">
+                                <div class="py-3 pb-5 mr-3 float-left">
+                                  <div class="avatar">
+                                    <img src="{{ friend.img.url }}" class="img-avatar" alt="{{ friend.user.get_full_name }}">
+                                    <span class="avatar-status badge-success"></span>
+                                  </div>
+                                </div>
+                                <div>
+                                    <a href="{% url 'register:user' profile_id=friend.id %}"><small class="text-muted">{{ friend.user.get_full_name }}</small></a>
+                                    {% if friend.user.last_login %}
+                                  <small class="text-muted float-right mt-1">Last login: {{ friend.user.last_login|date:"H:i" }} in {{ friend.user.last_login|date:"d/m" }}</small>
+                                    {% endif %}
+                                </div>
+                                <div class="text-truncate font-weight-bold">{{ friend.company }}</div>
+                                {% if friend.user.project_set.all %}
+                                <em class="text-muted">Projects that {{ friend.user.first_name }} is working:</em>
+                                <small class="text-muted">
+                                    {% for project in friend.user.project_set.all %}
+                                    {{ project.name }},
+                                    {% endfor %}
+                                </small>
+                                {% else %}
+                                <em class="text-muted">{{ friend.user.first_name }} is working in no projects until now.</em>
+                                {% endif %}
+                                <div>
+                                    <a href="{% url 'register:remove-friend' profile_id=friend.id %}" class="badge badge-danger text-white">Remove friend</a>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                {% if user.is_authenticated %}
+                    <span class="display-4 m-5">You have no friends :(</span>
+                {% else %}
+                    <a href="{% url 'core:login' %}" class="nav-link display-4">Log in to see your friends</a>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

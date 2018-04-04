@@ -30,8 +30,6 @@ def register(request):
         return render(request, 'register/reg_form.html', context)
 
 
-
-
 def usersView(request):
     users = UserProfile.objects.all()
     tasks = Task.objects.all()
@@ -47,6 +45,14 @@ def user_view(request, profile_id):
         'user_view' : user,
     }
     return render(request, 'register/user.html', context)
+
+
+def profile(request):
+    user = get_active_profile(request)
+    context = {
+        'user' : user,
+    }
+    return render(request, 'register/profile.html', context)
 
 
 def newCompany(request):
