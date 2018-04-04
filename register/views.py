@@ -48,11 +48,7 @@ def user_view(request, profile_id):
 
 
 def profile(request):
-    user = get_active_profile(request)
-    context = {
-        'user' : user,
-    }
-    return render(request, 'register/profile.html', context)
+    return render(request, 'register/profile.html')
 
 
 def newCompany(request):

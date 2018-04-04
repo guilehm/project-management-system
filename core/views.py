@@ -72,7 +72,6 @@ def context(request): # send context to base.html
             }
             return context
         except:
-            print('tem que imprimir except ***************')
             users_prof = UserProfile.objects.all()
             context = {
                 'users':users,
