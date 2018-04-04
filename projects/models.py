@@ -30,7 +30,7 @@ class Project(models.Model):
     efforts = models.DurationField()
     status = models.CharField(max_length=7, choices=status, default=1)
     dead_line = models.DateField()
-    company = models.ForeignKey('register.Company', on_delete=models.DO_NOTHING)
+    company = models.ForeignKey('register.Company', on_delete=models.CASCADE)
     complete_per = models.FloatField(max_length=2, validators = [MinValueValidator(0), MaxValueValidator(100)])
     description = models.TextField(blank=True)
 
@@ -45,7 +45,7 @@ class Project(models.Model):
 
 
 class Task(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.DO_NOTHING)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     assign = models.ManyToManyField(User)
     task_name = models.CharField(max_length=80)
     status = models.CharField(max_length=7, choices=status, default=1)

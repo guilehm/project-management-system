@@ -41,8 +41,8 @@ class UserProfile(models.Model):
 
 
 class Invite(models.Model):
-    inviter = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING, related_name='made_invites')
-    invited = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING, related_name='received_invites')
+    inviter = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='made_invites')
+    invited = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='received_invites')
 
     def accept(self):
         self.invited.friends.add(self.inviter)
