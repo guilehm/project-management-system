@@ -33,7 +33,7 @@ def register(request):
 
 
 def usersView(request):
-    users = User.objects.all()
+    users = UserProfile.objects.all()
     tasks = Task.objects.all()
     context = {
         'users': users,

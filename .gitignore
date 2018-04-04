@@ -103,3 +103,5 @@ ENV/
 db.sqlite3
 
 core/media/*
+
+static/*

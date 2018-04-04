@@ -34,7 +34,7 @@
                         <tr>
                             <td class="text-center">
                                 <div class="avatar">
-                                <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="{{ user.email }}">
+                                <img src="{{ invite.inviter.img.url }}" class="img-avatar" alt="{{ user.email }}">
                                 <span class="avatar-status badge-success"></span>
                                 </div>
                             </td>

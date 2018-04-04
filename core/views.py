@@ -32,9 +32,6 @@ def dashboard(request):
     return render(request, 'core/dashboard.html', context)
 
 
-def model(request):
-    return render(request, 'core/model.html')
-
 
 def login_view(request):
     if request.method == 'POST':
