@@ -24,7 +24,7 @@
                             <span>friends</span>
                         </li>
                         <li>
-                            <strong>{{ logged_user.project.all.count }}</strong>
+                            <strong>{{ logged_user.user.project_set.all.count }}</strong>
                             <span>projects</span>
                         </li>
                         </ul>
@@ -38,7 +38,7 @@
                         <ul class="mt-3">
                             <li><span>Company: <a href="">{{ logged_user.company }}</a></span></li>
                             <li><span>Projects:
-                                    {% for project in logged_user.project.all %}
+                                    {% for project in logged_user.user.project_set.all %}
                                         <a href="">{{ project.name }},</a>
                                     {% endfor %}
                                 </span>
