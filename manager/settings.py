@@ -130,7 +130,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/' # Included upload images
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'core/static/core/media') # Included upload images
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'core/media') # Included upload images
+print(MEDIA_ROOT)
 
 # Heroku configs
 if os.getcwd() == '/app':

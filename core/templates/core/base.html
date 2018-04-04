@@ -28,6 +28,7 @@
 </head>
 {% block body %}
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+
   <header class="app-header navbar">
     <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
       <span class="navbar-toggler-icon"></span>
@@ -198,7 +199,6 @@
           </div>
         </li>
       </ol>
-
 {% block content %}
 {% endblock %}
     </main>
@@ -256,7 +256,11 @@
           {% if not user in friends %}
           <div class="m-2 mt-4 float-left">
               <div class="avatar">
+                {% if user.img %}
+                <img src="{{ user.img.url }}" class="img-avatar" alt="person_name">
+                {% else %}
                 <img src="{% static 'core/img/avatar/blank_profile.png' %}" class="img-avatar" alt="person_name">
+                {% endif %}
                 <span class="avatar-status badge-success"></span>
               </div>
           </div>

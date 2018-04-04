@@ -23,7 +23,7 @@ class UserProfile(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     project = models.ManyToManyField(Project, blank=True)
     friends = models.ManyToManyField('self', blank=True)
-    img0    = models.ImageField(upload_to='avatar', blank=True)
+    img    = models.ImageField(upload_to='core/avatar', blank=True, default='core/avatar/blank_profile.png')
 
     def __str__(self):
         return (str(self.user))

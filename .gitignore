@@ -101,3 +101,5 @@ ENV/
 .idea/*
 !venv\Lib\site-packages\django\contrib\auth\models.py
 db.sqlite3
+
+core/media/*
