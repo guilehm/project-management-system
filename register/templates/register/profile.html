@@ -33,27 +33,26 @@
             </div>
 
             <div class="row mt-5">
-                <div class="col-12 col-md-6">
-                    <div class="social-box" style="height:120%">
-                        <ul>
-                            <li><span>Company: {{ logged_user.company }}</span></li>
+                <div class="col-12">
+                    <div class="social-box" style="">
+                        <ul class="mt-3">
+                            <li><span>Company: <a href="">{{ logged_user.company }}</a></span></li>
+                            <li><span>Projects:
+                                    {% for project in logged_user.project.all %}
+                                        <a href="">{{ project.name }},</a>
+                                    {% endfor %}
+                                </span>
+                            </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="social-box" style="height:120%">
-                        <img src="{{ logged_user.img.url }}" class="img-avatar m-4" alt="{{ user }}" width="20%">
                         <ul>
-                        <li>
-                            <a href="{% url 'register:user' profile_id=logged_user.id %}" class="text-dark">
-                                <strong>{{ logged_user.friends.all.count }}</strong>
-                            </a>
-                            <span>friends</span>
-                        </li>
-                        <li>
-                            <strong>{{ logged_user.project.all.count }}</strong>
-                            <span>projects</span>
-                        </li>
+                            <li><span>Name: <a href="">{{ logged_user.user.get_full_name }}</a></span></li>
+                            <li><span>e-mail: <span class="text-blue text-lowercase">{{ logged_user.user.email }}</span></span>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li><span>Date joined: <span class="text-blue">{{ logged_user.user.date_joined }}</span></span></li>
+                            <li><span>Last login: <span class="text-blue">{{ logged_user.user.last_login }}</span></span>
+                            </li>
                         </ul>
                     </div>
                 </div>
