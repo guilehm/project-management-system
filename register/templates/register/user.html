@@ -10,7 +10,8 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+    <div id="ui-view" style="opacity: 1;">
+        <div class="animated fadeIn">
         <!--<div class="row">-->
             <!--<div class="col-12">-->
                 <!--<h2 class="display-4">Friends</h2>-->
@@ -34,31 +35,36 @@
                 </div>
             </div>
 
-            <div class="row mt-5">
+            <div class="row">
                 <div class="col-12">
-                    <div class="social-box" style="">
-                        <ul class="mt-3">
-                            <li><span>Name: <span class="text-blue">{{ user_view.user.get_full_name }}</span></span></li>
-                            <li><span>Projects:
-                                    {% for project in user_view.project.all %}
-                                        <a href="">{{ project.name }},</a>
-                                    {% endfor %}
-                                </span>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li><span>Company: <a href="">{{ user_view.company }}</a></span></li>
-                            <li><span>e-mail: <span class="text-blue text-lowercase">{{ user_view.user.email }}</span></span>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li><span>Date joined: <span class="text-blue">{{ user_view.user.date_joined }}</span></span></li>
-                            <li><span>Last login: <span class="text-blue">{{ user_view.user.last_login }}</span></span>
-                            </li>
-                        </ul>
+                    <div class="card mt-5">
+                        <div class="simple-box">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <ul class="m-4">
+                                        <h5>Personal info:</h5>
+                                        <li><span>Name:</span> {{ user_view.user.get_full_name }}</li>
+                                        <li><span>Company:</span> {{ user_view.company }}</li>
+                                        <li><span>E-mail:</span> {{ user_view.user.email}}</li>
+                                        <li><span>Last login:</span> {{ user_view.user.last_login }}</li>
+                                        <li><span>Date joined:</span> {{ user_view.user.date_joined }}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-md-6 text-left">
+                                    <ul class="m-4">
+                                        <h5>Tasks that {{ user_view }} is working:</h5>
+                                        {% for task in user_view.user.project_set.all %}
+                                        <li>{{ task }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
 
         <div class="row">
                 <div class="col-12">
@@ -95,6 +101,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-12 col-md-6">
                                 <div class="card-body">
                                     <div class="tab-pane p-3 active show">
