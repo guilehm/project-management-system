@@ -59,7 +59,7 @@
                 {% endfor %}
                 {% else %}
                 {% if user.is_authenticated %}
-                    <span class="display-4 m-5">You have no friends :(</span>
+                    <h3 class="m-5">You have no friends :(</h3>
                 {% else %}
                     <a href="{% url 'core:login' %}" class="nav-link display-4">Log in to see your friends</a>
                 {% endif %}
