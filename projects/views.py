@@ -27,7 +27,7 @@ def newTask(request):
             form.save()
             created = True
             context = {
-                'task_created': created,
+                'created': created,
                 'form': form,
             }
             return render(request, 'projects/new_task.html', context)
@@ -49,7 +49,7 @@ def newProject(request):
             created = True
             form = ProjectRegistrationForm()
             context = {
-                'project_created': created,
+                'created': created,
                 'form': form,
             }
             return render(request, 'projects/new_project.html', context)
