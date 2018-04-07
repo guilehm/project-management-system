@@ -25,7 +25,7 @@
                                   </button>
                                   Congratulations, your company was created!
                               </div>
-                            {% else %}
+                            {% endif %}
                             <form method="post" action="">
                                 {% csrf_token %}
                                 <h1>Register</h1>
@@ -118,7 +118,6 @@
                             </form>
                         </div>
                     </div>
-                    {% endif %}
                     <div class="card text-white bg-primary py-5">
                         <div class="card-body text-center">
                             <div>
