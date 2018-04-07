@@ -12,126 +12,126 @@
 
 
 {% block content %}
-<div class="container-fluid">
-  <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
-  <div class="row">
-  <div class="col-12">
-  <div class="card">
-  <div class="card-header">Company Registration Form
-  </div>
-  <div class="card-body">
-    <div class="jumbotron bg-white">
-    <h1 class="display-4">Company Registration</h1>
-    <p class="lead">Make your company registration here</p>
-    <hr class="my-4">
-    {% if created %}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-          Parabéns, sua empresa foi criada!
-      </div>
-    {% else %}
-
-            <div class="card">
-                <div class="card-header">
-                    Company Creation Form
-                </div>
-                <div class="card-body">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-industry"></i></span>
+<div class="container animated fadeIn">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            {% if created %}
+                              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  Congratulations, your company was created!
+                              </div>
+                            {% else %}
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <h1>Register</h1>
+                                <p class="text-muted">Set up your company registration here</p>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fa fa-industry"></i></span>
+                                        </div>
+                                        {{ form.social_name }}
+                                        {% if form.social_name.errors %}
+                                            <ol>
+                                            {% for error in form.social_name.errors %}
+                                                <li><strong>{{ error|escape }}</strong></li>
+                                            {% endfor %}
+                                            </ol>
+                                        {% endif %}
+                                    </div>
                                 </div>
-                                {{ form.social_name }}
-                                {% if form.social_name.errors %}
-                                    <ol>
-                                    {% for error in form.social_name.errors %}
-                                        <li><strong>{{ error|escape }}</strong></li>
-                                    {% endfor %}
-                                    </ol>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-industry"></i></span>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fa fa-industry"></i></span>
+                                        </div>
+                                        {{ form.name }}
+                                        {% if form.name.errors %}
+                                            <ol>
+                                            {% for error in form.name.errors %}
+                                                <li><strong>{{ error|escape }}</strong></li>
+                                            {% endfor %}
+                                            </ol>
+                                        {% endif %}
+                                    </div>
                                 </div>
-                                {{ form.name }}
-                                {% if form.name.errors %}
-                                    <ol>
-                                    {% for error in form.name.errors %}
-                                        <li><strong>{{ error|escape }}</strong></li>
-                                    {% endfor %}
-                                    </ol>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    </div>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <ol>
+                                        {% for error in form.email.errors %}
+                                            <li><strong>{{ error|escape }}</strong></li>
+                                        {% endfor %}
+                                        </ol>
+                                    {% endif %}
                                 </div>
-                                {{ form.email }}
-                                {% if form.email.errors %}
-                                    <ol>
-                                    {% for error in form.email.errors %}
-                                        <li><strong>{{ error|escape }}</strong></li>
-                                    {% endfor %}
-                                    </ol>
-                                {% endif %}
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                                    </div>
+                                    {{ form.city }}
+                                    {% if form.city.errors %}
+                                        <ol>
+                                        {% for error in form.city.errors %}
+                                            <li><strong>{{ error|escape }}</strong></li>
+                                        {% endfor %}
+                                        </ol>
+                                    {% endif %}
                                 </div>
-                                {{ form.city }}
-                                {% if form.city.errors %}
-                                    <ol>
-                                    {% for error in form.city.errors %}
-                                        <li><strong>{{ error|escape }}</strong></li>
-                                    {% endfor %}
-                                    </ol>
-                                {% endif %}
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                    {{ form.found_date }}
                                 </div>
-                                {{ form.found_date }}
-                            </div>
-                            {% if form.found_date.errors %}
+                                {% if form.found_date.errors %}
                                     <ol>
                                     {% for error in form.found_date.errors %}
                                         <li><strong>{{ error|escape }}</strong></li>
                                     {% endfor %}
                                     </ol>
                                 {% endif %}
+                            </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary px-4">Submit</button>
+                                    </div>
+                                    {% if login_form.errors %}
+                                    <div class="alert alert-danger col-12 mt-3" role="alert">
+                                        Wrong username or password
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                    {% endif %}
+                    <div class="card text-white bg-primary py-5">
+                        <div class="card-body text-center">
+                            <div>
+                                <h2>Sign up</h2>
+                                <p class="mt-4">Register now, it's free.</p>
+                                <a href="{% url 'register:new-user' %}" class="btn btn-primary active mt-3">Register Now!</a>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="">
-                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-    {% endif %}
-  </div>
-
-  </div>
-  </div>
-  </div>
-  </div>
-</div>
-</div>
+    </div>
 
 {% endblock %}
