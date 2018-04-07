@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 text-left">
                                     <ul class="m-4">
-                                        <h5>Tasks that {{ user_view }} is involved:</h5>
+                                        <h5>Tasks that {{ user_view.user.first_name }} is involved:</h5>
                                         {% for task in user_view.user.task_set.all %}
                                         <li>{{ task }}</li>
                                         {% endfor %}
