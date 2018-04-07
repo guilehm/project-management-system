@@ -6,6 +6,7 @@ from .models import UserProfile
 from .models import Invite
 from .forms import RegistrationForm
 from .forms import CompanyRegistrationForm
+from .forms import ProfilePictureForm
 
 
 # Create your views here.
@@ -47,7 +48,21 @@ def user_view(request, profile_id):
 
 
 def profile(request):
-    return render(request, 'register/profile.html')
+    if request.method == 'POST':
+        img_form = ProfilePictureForm(request.POST, request.FILES)
+        print('PRINT 1: ', img_form)
+        context = {'img_form' : img_form }
+        if img_form.is_valid():
+            img_form.save(request)
+            updated = True
+            context = {'img_form' : img_form, 'updated' : updated }
+            return render(request, 'register/profile.html', context)
+        else:
+            return render(request, 'register/profile.html', context)
+    else:
+        img_form = ProfilePictureForm()
+        context = {'img_form' : img_form }
+        return render(request, 'register/profile.html', context)
 
 
 def newCompany(request):
