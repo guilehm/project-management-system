@@ -10,7 +10,7 @@ django-storages==1.6.6
 docutils==0.14
 gunicorn==19.7.1
 jmespath==0.9.3
-Pillow==5.1.0
+Pillow==6.2.0
 psycopg2==2.7.4
 python-dateutil==2.6.1
 pytz==2018.3
