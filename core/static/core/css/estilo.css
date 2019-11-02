@@ -1,0 +1,26 @@
+.img-avatar-red {
+	max-width: 40px;
+}
+
+.no-style {
+	list-style-type: none;
+}
+
+.brand-gui {
+	width: 50px;
+	position: relative;
+}
+
+
+  .simple-box i {
+    display: block;
+    font-size: 40px;
+    line-height: 90px;
+    background: #c2cfd6; }
+  .simple-box ul {
+    padding: 10px 0;
+    list-style: none; }
+      .simple-box ul li strong {
+        font-size: 20px; }
+      .simple-box ul li span {
+        font-weight: 500; }
