@@ -105,4 +105,3 @@ db.sqlite3
 core/media/*
 
 static/*
-core/static*
