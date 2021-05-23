@@ -15,7 +15,7 @@
 
 ## Built With:
 
-* Python 3.6.4
+* Python 3.8.10 
 * Django Framework 2.0.4
 * CoreUI templates
 
